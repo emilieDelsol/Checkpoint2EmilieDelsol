@@ -22,17 +22,22 @@ namespace DALCheckPoint2EmilieD
         public static List<Student> SelectAllStudents()
         {
             SqlCommand command = _connection.CreateCommand();
-            command.CommandText = "SELECT * FROM Student";
+            command.CommandText = "SELECT StudentLastName, StudentFirstName,  AVG(Controle.CotroleNote)  " +
+                                                                        "FROM Controle INNER JOIN Student ON StudentId = FK_StudentId " +
+                                                                        "GROUP BY StudentId,StudentLastName, StudentFirstName"; 
             SqlDataReader reader = command.ExecuteReader();
             List<Student> students = new List<Student>();
             while (reader.Read())
             {
                 Student student= new Student
                 {
-                    StudentId = reader.GetInt32(0),
-                    StudentLastName = reader.GetString(1),
-                    StudentFirstName = reader.GetString(2),
-                    PromotionId = reader.GetInt32(3),
+                    /*                    StudentId = reader.GetInt32(0),
+
+                                        
+                    */
+                    StudentLastName = reader.GetString(0),
+                    StudentFirstName = reader.GetString(1),
+                    Average =reader.GetDecimal(2),
                 }; 
                 students.Add(student);
             }
@@ -51,7 +56,7 @@ namespace DALCheckPoint2EmilieD
             {
                 Student student = new Student
                 {
-                    StudentId = reader.GetInt32(0),
+                   StudentId = reader.GetInt32(0),
                     StudentLastName = reader.GetString(1),
                     StudentFirstName = reader.GetString(2),
                     PromotionId = reader.GetInt32(3),
@@ -61,5 +66,10 @@ namespace DALCheckPoint2EmilieD
             reader.Close();
             return students;
         }
+
+
+        /*"SELECT Student.StudentId  Student.StudentLastName, Student.StudentFirstName, AVG(Controle.CotroleNote)  " +
+                                                                        "FROM Controle INNER JOIN Student ON StudentId = FK_StudentId " +
+                                                                        "GROUP BY StudentId,StudentLastName, StudentFirstName";*/
     }
 }

@@ -9,11 +9,12 @@ namespace DALCheckPoint2EmilieD
         public Int32 StudentId { get; set; }
         public String StudentLastName { get; set; }
         public String StudentFirstName { get; set; }
+        public Decimal Average { get; set; }
         public Int32 PromotionId { get; set; }
 
         public override string ToString()
         {
-            return "Nom: " + StudentLastName + " prénom: " + StudentFirstName + " \n\tId de sa promotion:  "+  PromotionId;
+            return   StudentLastName +" " + StudentFirstName + " sa moyenne est " + Average +"\n";
         }
     }
 }
