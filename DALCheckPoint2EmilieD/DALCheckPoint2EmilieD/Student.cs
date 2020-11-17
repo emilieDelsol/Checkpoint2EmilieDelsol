@@ -10,5 +10,9 @@ namespace DALCheckPoint2EmilieD
         public String StudentName { get; set; }
         public Int32 PromotionId { get; set; }
 
+        public override string ToString()
+        {
+            return "Nom" + StudentName + " \n\tId de sa promotion:  "+  PromotionId;
+        }
     }
 }

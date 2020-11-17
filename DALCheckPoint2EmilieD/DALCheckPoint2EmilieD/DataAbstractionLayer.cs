@@ -19,5 +19,24 @@ namespace DALCheckPoint2EmilieD
             _connection.Close();
         }
 
+        public static List<Student> SelectAllStudents()
+        {
+            SqlCommand command = _connection.CreateCommand();
+            command.CommandText = "SELECT * FROM Student";
+            SqlDataReader reader = command.ExecuteReader();
+            List<Student> students = new List<Student>();
+            while (reader.Read())
+            {
+                Student student= new Student
+                {
+                    StudentId = reader.GetInt32(0),
+                    StudentName = reader.GetString(1),
+                    PromotionId= reader.GetInt32(2),
+                }; 
+                students.Add(student);
+            }
+            reader.Close();
+            return students;
+        }
     }
 }
