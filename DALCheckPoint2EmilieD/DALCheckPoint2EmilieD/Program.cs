@@ -18,12 +18,12 @@ namespace DALCheckPoint2EmilieD
             Console.WriteLine("****************************************************** \nSélection de tous les étudiants: \n");
             foreach (Student student in students)
                 {
-                Console.WriteLine(student);
+                Console.WriteLine($"{student.StudentLastName} {student.StudentFirstName} à une moyenne de {student.Average}");
             }
             List<Student> studentsByLastName = DataAbstractionLayer.SelectStudentsByName();
             foreach(Student student in studentsByLastName)
             {
-                Console.WriteLine($"****************************************************** \nSélection d'un étudiant en fonction de son nom de famille: \n\t{ student}");
+                Console.WriteLine($"****************************************************** \nSélection d'un étudiant en fonction de son nom de famille: \n\t{ student.StudentLastName} {student.StudentFirstName}");
             }
         }
     }

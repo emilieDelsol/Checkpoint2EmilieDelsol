@@ -12,9 +12,6 @@ namespace DALCheckPoint2EmilieD
         public Decimal Average { get; set; }
         public Int32 PromotionId { get; set; }
 
-        public override string ToString()
-        {
-            return   StudentLastName +" " + StudentFirstName + " sa moyenne est " + Average +"\n";
-        }
+       
     }
 }
