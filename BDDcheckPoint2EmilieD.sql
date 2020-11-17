@@ -13,7 +13,8 @@ GO
 
 CREATE TABLE Student (
 	StudentId INT PRIMARY KEY IDENTITY(1, 1),
-	StudentName VARCHAR(90) NOT NULL,
+	StudentLastName VARCHAR(90) NOT NULL,
+	StudentFirstName VARCHAR(90) NOT NULL,
 	FK_PromotionId INT FOREIGN KEY REFERENCES [Promotion](PromotionId) NOT NULL
 )
 GO 
@@ -27,6 +28,6 @@ GO
 INSERT INTO Promotion (PromotionName) 
 	VALUES ('C#'),('JS')
 GO
-INSERT INTO Student (StudentName, FK_PromotionId)
-	VALUES ('EmilieD',1),('Maïlys',1),('Colas',1),('Hervé',1),('Adrien',1),
-			('EmilieA',2),('Rooarii',2),('Lisa-Lou',2),('Jessica',2),('Flavien',2)
+INSERT INTO Student (StudentFirstName,StudentLastName, FK_PromotionId)
+	VALUES ('Emilie', 'Delsol',1),('Maïlys','Dumas',1),('Colas','Durcy',1),('Hervé','Meste',1),('Adrien','Zapico',1),
+			('Emilie', 'Anglade',2),('Rooarii','Manuel',2),('Lisa-Lou', 'Kara',2),('Jessica','Giraud',2),('Flavien','Besseau',2)
