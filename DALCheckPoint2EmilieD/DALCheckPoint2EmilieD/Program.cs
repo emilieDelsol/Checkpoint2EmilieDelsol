@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace DALCheckPoint2EmilieD
 {
@@ -18,12 +19,19 @@ namespace DALCheckPoint2EmilieD
 
             foreach (Promotion promotion in context.Promotions.Include(p=>p.Students))
                 {
-                Console.WriteLine("\nLa promo : " + promotion.PromotionName +" à comme étudiants:");
-                foreach(Student student in promotion.Students)
+                Console.WriteLine("\nLa promo : " + promotion.PromotionName +" à "+ promotion.Students.Count()  +" étudiants:");
+                foreach (Student student in promotion.Students)
                 {
-                    Console.WriteLine(student.StudentFirstName);
+                    Console.WriteLine($"\t {student.StudentFirstName}");
                 }
             }
+
+            foreach (Student student in context.Students)
+            {
+                Console.WriteLine($"{student.ControlesList.Count()}");
+            }
+
+
 
             
         }
@@ -71,15 +79,15 @@ namespace DALCheckPoint2EmilieD
 
             ICollection<Student> studentCsharp = new List<Student>
             {
-                 new Student { StudentFirstName = "Emilie", StudentLastName = "Delsol", Controles = controlesEmilie },
-                new Student { StudentFirstName = "Colas", StudentLastName = "Durcy", Controles = controlesColas },
-                new Student { StudentFirstName = "Sophie", StudentLastName = "Brultet", Controles = controlesSophie },
+                 new Student { StudentFirstName = "Emilie", StudentLastName = "Delsol", ControlesList = controlesEmilie },
+                new Student { StudentFirstName = "Colas", StudentLastName = "Durcy", ControlesList = controlesColas },
+                new Student { StudentFirstName = "Sophie", StudentLastName = "Brultet", ControlesList = controlesSophie },
         };
 
             ICollection<Student> studentJS = new List<Student>
             {
-                new Student { StudentFirstName = "Rooarii", StudentLastName = "Manuel", Controles = controlesRooarii },
-                new Student { StudentFirstName = "Lisa-Lou", StudentLastName = "Kara", Controles = controlesLisaLou }
+                new Student { StudentFirstName = "Rooarii", StudentLastName = "Manuel", ControlesList = controlesRooarii },
+                new Student { StudentFirstName = "Lisa-Lou", StudentLastName = "Kara", ControlesList = controlesLisaLou }
         };
 
 

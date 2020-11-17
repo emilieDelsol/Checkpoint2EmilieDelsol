@@ -9,6 +9,7 @@ namespace DALCheckPoint2EmilieD
         public Int32 PromotionId { get; set; }
         public String PromotionName { get; set; }
         public ICollection<Student> Students { get; set; }
+        public Int32 StudentId { get; set; }
 
     }
 }
