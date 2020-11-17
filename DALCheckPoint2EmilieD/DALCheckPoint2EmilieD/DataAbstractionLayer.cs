@@ -30,9 +30,32 @@ namespace DALCheckPoint2EmilieD
                 Student student= new Student
                 {
                     StudentId = reader.GetInt32(0),
-                    StudentName = reader.GetString(1),
-                    PromotionId= reader.GetInt32(2),
+                    StudentLastName = reader.GetString(1),
+                    StudentFirstName = reader.GetString(2),
+                    PromotionId = reader.GetInt32(3),
                 }; 
+                students.Add(student);
+            }
+            reader.Close();
+            return students;
+        }
+
+
+        public static List<Student> SelectStudentsByName()
+        {
+            SqlCommand command = _connection.CreateCommand();
+            command.CommandText = "SELECT * FROM Student WHERE StudentLastName='Delsol'";
+            SqlDataReader reader = command.ExecuteReader();
+            List<Student> students = new List<Student>();
+            while (reader.Read())
+            {
+                Student student = new Student
+                {
+                    StudentId = reader.GetInt32(0),
+                    StudentLastName = reader.GetString(1),
+                    StudentFirstName = reader.GetString(2),
+                    PromotionId = reader.GetInt32(3),
+                };
                 students.Add(student);
             }
             reader.Close();
